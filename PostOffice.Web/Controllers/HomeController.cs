@@ -12,8 +12,8 @@ namespace PostOffice.Web.Controllers
     {
         public ActionResult Index()
         {
-            //var parcels = Db.Parcels.ToList();
-            //var model = Mapper.Map<IEnumerable<Parcel>, IEnumerable<ParcelViewModel>>(parcels);
+            var parcels = Db.Parcels.ToList();
+            ViewBag.Parcels = Mapper.Map<IEnumerable<Parcel>, IEnumerable<ParcelViewModel>>(parcels);
 
             return View();
         }
