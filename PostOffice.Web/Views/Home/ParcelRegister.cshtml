@@ -1,0 +1,79 @@
+﻿@model PostOffice.Web.Models.ParcelRegisterViewModel
+
+<div id="registerModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Заголовок модального окна -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Регистрация посылки</h4>
+            </div>
+            <!-- Основное содержимое модального окна -->
+            <div class="modal-body">
+                @using (Ajax.BeginForm("ParcelRegister", FormMethod.Post, new AjaxOptions { UpdateTargetId = "searchresults" }, new { @class = "form-horizontal", role = "form", onsubmit = "closeModal()" }))
+                {
+                    @Html.AntiForgeryToken()
+                    {
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Weight)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Weight, new {@class = "form-control", placeholder = "100,50"})
+                                @Html.ValidationMessageFor(v => v.Weight)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.RecipientFio)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.RecipientFio, new {@class = "form-control", placeholder = "Иванов Иван"})
+                                @Html.ValidationMessageFor(v => v.RecipientFio)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.SenderFio)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.SenderFio, new {@class = "form-control", placeholder = "Петров Петр"})
+                                @Html.ValidationMessageFor(v => v.SenderFio)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.RecipAdress)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.RecipAdress, new {@class = "form-control", placeholder = "Москва"})
+                                @Html.ValidationMessageFor(v => v.RecipAdress)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.SendAdress)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.SendAdress, new {@class = "form-control", placeholder = "Брянск"})
+                                @Html.ValidationMessageFor(v => v.SendAdress)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Inventory)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Inventory, new {@class = "form-control", placeholder = "рубашка,брюки"})
+                                @Html.ValidationMessageFor(v => v.Inventory)
+                            </dd>
+                        </dl>
+
+                        <input type="submit" class="btn btn-primary" value="Зарегистрировать" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Назад</button>
+                    }
+                }
+            </div>
+            <!-- Футер модального окна -->
+            <div id="mfooter" class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function closeModal() {
+        $('#registerModal').modal("hide");
+    }
+</script>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Почтовый офис</h2>
+            @using (Ajax.BeginForm("ParcelSearch", new AjaxOptions {UpdateTargetId = "searchresults"}))
+            {
+                @Html.AntiForgeryToken()
+                {
+                    <input type="text" name="search"/>
+                    <input type="submit" value="Поиск"/>
+                }
+            }
+        </div>
+        <div class="panel-body">
+            <div class="btn btn-group">
+                <a href="#registerModal" class="btn btn-primary" data-toggle="modal">Регистрация посылки</a>
+                @Html.Partial("ParcelRegister")
+            </div>
+        </div>
+        <div id="searchresults">
+            @Html.Partial("ParcelSearch")
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
