@@ -12,32 +12,18 @@ namespace PostOffice.Web.Models
         public double Weight { get; set; }
 
         /// <summary>
-        /// ФИО получателя
+        /// Получатель
         /// </summary>
         [Required]
-        [Display(Name = "ФИО получателя")]
-        public string RecipientFio { get; set; }
-
+        [Display(Name = "Получатель")]
+        public MemberViewModel Recipient { get; set; }
+        
         /// <summary>
-        /// ФИО отправителя
+        /// Отправитель
         /// </summary>
         [Required]
-        [Display(Name = "ФИО отправителя")]
-        public string SenderFio { get; set; }
-
-        /// <summary>
-        /// Адресс получателя
-        /// </summary>
-        [Required]
-        [Display(Name = "Адрес получателя")]
-        public string RecipAdress { get; set; }
-
-        /// <summary>
-        /// Адресс отправителя
-        /// </summary>
-        [Required]
-        [Display(Name = "Адрес отправителя")]
-        public string SendAdress { get; set; }
+        [Display(Name = "Отправитель")]
+        public MemberViewModel Sender { get; set; }
 
         /// <summary>
         /// Опись

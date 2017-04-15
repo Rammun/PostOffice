@@ -9,15 +9,9 @@ namespace PostOffice.Web.Mapping.Profiles
     {
         public ViewModelToEntitylMappingProfile()
         {
-            CreateMap<ParcelViewModel, Parcel>();
+            CreateMap<ParcelRegisterViewModel, Parcel>();
 
-            CreateMap<ThingViewModel, Thing>();
-
-            CreateMap<ParcelRegisterViewModel, Parcel>()
-                .ForMember(x => x.Inventory, y => y.MapFrom(z => z.Inventory
-                                                                  .Split(',')
-                                                                  .Select(t => new Thing { Name = t })
-                                                                  .ToList()));
+            CreateMap<MemberViewModel, Member>();
         }
     }
 }

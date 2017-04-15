@@ -214,8 +214,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Entity\Member.cs" />
     <Compile Include="Entity\Parcel.cs" />
-    <Compile Include="Entity\Thing.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,6 +225,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MemberViewModel.cs" />
     <Compile Include="Models\ParcelViewModel.cs" />
     <Compile Include="Models\ParcelRegisterViewModel.cs" />
     <Compile Include="Models\ThingViewModel.cs" />

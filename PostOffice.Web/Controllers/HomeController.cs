@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using PostOffice.Web.Entity;
@@ -12,7 +11,12 @@ namespace PostOffice.Web.Controllers
     {
         public ActionResult Index()
         {
-            var parcels = Db.Parcels.ToList();
+            var parcels = Db
+                .Parcels
+                .Include(r => r.Recipient)
+                .Include(s => s.Sender)
+                .ToList();
+
             ViewBag.Parcels = Mapper.Map<IEnumerable<Parcel>, IEnumerable<ParcelViewModel>>(parcels);
 
             return View();
@@ -39,18 +43,30 @@ namespace PostOffice.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ParcelSearch(string search = null)
         {
-            var parcels = Db.Parcels.ToList();
+            IEnumerable<ParcelViewModel> result;
+
+            var parcels = Db
+                 .Parcels
+                 .Include(r => r.Recipient)
+                 .Include(s => s.Sender)
+                 .ToList();
+            
             var models = Mapper.Map<IEnumerable<Parcel>, IEnumerable<ParcelViewModel>>(parcels);
 
             if (string.IsNullOrEmpty(search))
-                return PartialView(models);
-            
-            var result = models
-                .Where(x =>
-                       x.RecipAdress.Contains(search) ||
-                       x.SendAdress.Contains(search) ||
-                       x.RecipientFio.Contains(search) ||
-                       x.SenderFio.Contains(search));
+            {
+                result = models;
+            }
+            else
+            {
+                result = models
+                            .Where(x =>
+                                   x.RecipientAdress.Contains(search) ||
+                                   x.SenderAdress.Contains(search) ||
+                                   x.RecipientFullName.Contains(search) ||
+                                   x.SenderFullName.Contains(search))
+                            .ToList();
+            }
 
             return PartialView(result);
         }

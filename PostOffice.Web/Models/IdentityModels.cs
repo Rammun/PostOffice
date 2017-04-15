@@ -22,17 +22,33 @@ namespace PostOffice.Web.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Parcel> Parcels { get; set; }
-        public DbSet<Thing> Things { get; set; }
+        public DbSet<Member> Members { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            //Database.SetInitializer(new DBInitializer());
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder
+                .Entity<Member>()
+                .HasMany(x => x.Received)
+                .WithRequired(z => z.Recipient)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder
+                .Entity<Member>()
+                .HasMany(x => x.Send)
+                .WithRequired(z => z.Sender)
+                .WillCascadeOnDelete(false);
         }
     }
 }

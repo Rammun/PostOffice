@@ -16,10 +16,10 @@
                 <tr>
                     <th>N</th>
                     <th>@Html.DisplayNameFor(x => x.Weight)</th>
-                    <th>@Html.DisplayNameFor(x => x.RecipientFio)</th>
-                    <th>@Html.DisplayNameFor(x => x.SenderFio)</th>
-                    <th>@Html.DisplayNameFor(x => x.RecipAdress)</th>
-                    <th>@Html.DisplayNameFor(x => x.SendAdress)</th>
+                    <th>@Html.DisplayNameFor(x => x.RecipientFullName)</th>
+                    <th>@Html.DisplayNameFor(x => x.SenderFullName)</th>
+                    <th>@Html.DisplayNameFor(x => x.RecipientAdress)</th>
+                    <th>@Html.DisplayNameFor(x => x.SenderAdress)</th>
                     <th>@Html.DisplayNameFor(x => x.Inventory)</th>
                 </tr>
             </thead>
@@ -32,29 +32,18 @@
                         <tr>
                             <td>@n</td>
                             <td>@parcel.Weight</td>
-                            <td>@parcel.RecipientFio</td>
-                            <td>@parcel.SenderFio</td>
-                            <td>@parcel.RecipAdress</td>
-                            <td>@parcel.SendAdress</td>
-                            <td>
-                                <select class="dropdown">
-                                    @if (parcel.Inventory.Any())
-                                    {
-                                        foreach (var thing in parcel.Inventory)
-                                        {
-                                            <option>
-                                                @thing.Name
-                                            </option>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <option>
-                                            Отсутствует
-                                        </option>
-                                    }
-                                </select>
-                            </td>
+                            <td>@parcel.RecipientFullName</td>
+                            <td>@parcel.SenderFullName</td>
+                            <td>@parcel.RecipientAdress</td>
+                            <td>@parcel.SenderAdress</td>
+                            @if (string.IsNullOrEmpty(parcel.Inventory))
+                            {
+                                <td>Отсутствует</td>
+                            }
+                            else
+                            {
+                                <td>Отсутствует</td>
+                            }
                         </tr>
                     }
                 }

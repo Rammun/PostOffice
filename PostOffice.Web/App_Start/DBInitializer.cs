@@ -8,32 +8,38 @@ namespace PostOffice.Web.App_Start
     {
         protected override void Seed(ApplicationDbContext dbContext)
         {
+            var member1 = new Member
+            {
+                FirstName = "Ivan",
+                LastName = "Ivanov",
+                Patronymic = "Ivanovich",
+                Address = "Moscow"
+            };
+
+            var member2 = new Member
+            {
+                FirstName = "Petr",
+                LastName = "Petrov",
+                Patronymic = "Petrovich",
+                Address = "Bryansk"
+            };
+
             var parcel1 = new Parcel
             {
                 Weight = 1000,
-                RecipientFio = "Ruslan",
-                SenderFio = "Alex",
-                RecipAdress = "Bryansk",
-                SendAdress = "Moscow"
+                Recipient = member1,
+                Sender = member2,
+                Inventory = "Many-many things"
             };
-
-            parcel1.Inventory.Add(new Thing { Name = "A" });
-            parcel1.Inventory.Add(new Thing { Name = "B" });
-            parcel1.Inventory.Add(new Thing { Name = "C" });
 
             var parcel2 = new Parcel
             {
                 Weight = 2000,
-                RecipientFio = "Ivan",
-                SenderFio = "Petr",
-                RecipAdress = "Moscow",
-                SendAdress = "Bryansk"
+                Recipient = member2,
+                Sender = member1,
+                Inventory = "Very few things"
             };
-
-            parcel2.Inventory.Add(new Thing { Name = "D" });
-            parcel2.Inventory.Add(new Thing { Name = "I" });
-            parcel2.Inventory.Add(new Thing { Name = "F" });
-
+            
             dbContext.Parcels.Add(parcel1);
             dbContext.Parcels.Add(parcel2);
 

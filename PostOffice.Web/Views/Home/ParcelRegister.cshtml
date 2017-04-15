@@ -1,7 +1,7 @@
 ﻿@model PostOffice.Web.Models.ParcelRegisterViewModel
 
 <div id="registerModal" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <!-- Заголовок модального окна -->
             <div class="modal-header">
@@ -19,43 +19,71 @@
                                 @Html.DisplayNameFor(n => n.Weight)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Weight, new {@class = "form-control", placeholder = "100,50"})
+                                @Html.EditorFor(t => t.Weight, new { @class = "form-control", placeholder = "100,50" })
                                 @Html.ValidationMessageFor(v => v.Weight)
-                            </dd>
-                            <dt>
-                                @Html.DisplayNameFor(n => n.RecipientFio)
-                            </dt>
-                            <dd>
-                                @Html.EditorFor(t => t.RecipientFio, new {@class = "form-control", placeholder = "Иванов Иван"})
-                                @Html.ValidationMessageFor(v => v.RecipientFio)
-                            </dd>
-                            <dt>
-                                @Html.DisplayNameFor(n => n.SenderFio)
-                            </dt>
-                            <dd>
-                                @Html.EditorFor(t => t.SenderFio, new {@class = "form-control", placeholder = "Петров Петр"})
-                                @Html.ValidationMessageFor(v => v.SenderFio)
-                            </dd>
-                            <dt>
-                                @Html.DisplayNameFor(n => n.RecipAdress)
-                            </dt>
-                            <dd>
-                                @Html.EditorFor(t => t.RecipAdress, new {@class = "form-control", placeholder = "Москва"})
-                                @Html.ValidationMessageFor(v => v.RecipAdress)
-                            </dd>
-                            <dt>
-                                @Html.DisplayNameFor(n => n.SendAdress)
-                            </dt>
-                            <dd>
-                                @Html.EditorFor(t => t.SendAdress, new {@class = "form-control", placeholder = "Брянск"})
-                                @Html.ValidationMessageFor(v => v.SendAdress)
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Inventory)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Inventory, new {@class = "form-control", placeholder = "рубашка,брюки"})
+                                @Html.EditorFor(t => t.Inventory, new { @class = "form-control", placeholder = "рубашка,брюки и носки" })
                                 @Html.ValidationMessageFor(v => v.Inventory)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Recipient.LastName)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Recipient.LastName, new { @class = "form-control", placeholder = "Иванов" })
+                                @Html.ValidationMessageFor(v => v.Recipient.LastName)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Recipient.FirstName)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Recipient.FirstName, new { @class = "form-control", placeholder = "Иван" })
+                                @Html.ValidationMessageFor(v => v.Recipient.FirstName)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Recipient.Patronymic)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Recipient.Patronymic, new {@class = "form-control", placeholder = "Иванович"})
+                                @Html.ValidationMessageFor(v => v.Recipient.Patronymic)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Recipient.Address)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Recipient.Address, new { @class = "form-control", placeholder = "Москва" })
+                                @Html.ValidationMessageFor(v => v.Recipient.Address)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Sender.LastName)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Sender.LastName, new { @class = "form-control", placeholder = "Петров" })
+                                @Html.ValidationMessageFor(v => v.Sender.LastName)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Sender.FirstName)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Sender.FirstName, new { @class = "form-control", placeholder = "Петр" })
+                                @Html.ValidationMessageFor(v => v.Sender.FirstName)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Sender.Patronymic)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Sender.Patronymic, new {@class = "form-control", placeholder = "Петрович"})
+                                @Html.ValidationMessageFor(v => v.Sender.Patronymic)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(n => n.Sender.Address)
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(t => t.Recipient.Address, new { @class = "form-control", placeholder = "Брянск" })
+                                @Html.ValidationMessageFor(v => v.Sender.Address)
                             </dd>
                         </dl>
 
