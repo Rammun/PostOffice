@@ -14,14 +14,12 @@ namespace PostOffice.Web.Models
         /// <summary>
         /// Получатель
         /// </summary>
-        [Required]
         [Display(Name = "Получатель")]
         public MemberViewModel Recipient { get; set; }
         
         /// <summary>
         /// Отправитель
         /// </summary>
-        [Required]
         [Display(Name = "Отправитель")]
         public MemberViewModel Sender { get; set; }
 

@@ -2,31 +2,32 @@
 @using System.Linq
 @using PostOffice.Web.Models
 
-@model IEnumerable<ParcelViewModel>
+@*@model IEnumerable<ParcelViewModel>*@
 
 @{
-    if (Model == null || !Model.Any())
+    if (false/*Model == null || !Model.Any()*/)
     {
         <p>Нет зарегистрированных посылок...</p>
     }
     else
     {
+        var parcels = (IEnumerable<ParcelViewModel>)ViewBag.Parcels;
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
                     <th>N</th>
-                    <th>@Html.DisplayNameFor(x => x.Weight)</th>
-                    <th>@Html.DisplayNameFor(x => x.RecipientFullName)</th>
-                    <th>@Html.DisplayNameFor(x => x.SenderFullName)</th>
-                    <th>@Html.DisplayNameFor(x => x.RecipientAdress)</th>
-                    <th>@Html.DisplayNameFor(x => x.SenderAdress)</th>
-                    <th>@Html.DisplayNameFor(x => x.Inventory)</th>
+                    <th>@Html.DisplayName("Weight")</th>
+                    <th>@Html.DisplayName("RecipientFullName")</th>
+                    <th>@Html.DisplayName("SenderFullName")</th>
+                    <th>@Html.DisplayName("RecipientAdress")</th>
+                    <th>@Html.DisplayName("SenderAdress")</th>
+                    <th>@Html.DisplayName("Inventory")</th>
                 </tr>
             </thead>
             <tbody>
                 @{
                     var n = 0;
-                    foreach (var parcel in Model)
+                    foreach (var parcel in parcels)
                     {
                         n++;
                         <tr>
@@ -42,7 +43,7 @@
                             }
                             else
                             {
-                                <td>Отсутствует</td>
+                                <td>@parcel.Inventory</td>
                             }
                         </tr>
                     }

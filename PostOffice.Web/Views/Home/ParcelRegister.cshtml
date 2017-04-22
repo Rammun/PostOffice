@@ -10,84 +10,75 @@
             </div>
             <!-- Основное содержимое модального окна -->
             <div class="modal-body">
-                @using (Ajax.BeginForm("ParcelRegister", FormMethod.Post, new AjaxOptions { UpdateTargetId = "searchresults" }, new { @class = "form-horizontal", role = "form", onsubmit = "closeModal()" }))
+                @using (Ajax.BeginForm("ParcelRegister", FormMethod.Post, new AjaxOptions {UpdateTargetId = "searchresults"}, new {@class = "form-horizontal", role = "form", onsubmit = "closeModal()"}))
                 {
                     @Html.AntiForgeryToken()
                     {
+                        @Html.ValidationSummary()
                         <dl class="dl-horizontal">
                             <dt>
                                 @Html.DisplayNameFor(n => n.Weight)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Weight, new { @class = "form-control", placeholder = "100,50" })
-                                @Html.ValidationMessageFor(v => v.Weight)
+                                @Html.EditorFor(t => t.Weight, new {@class = "form-control", placeholder = "100,50"})
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Inventory)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Inventory, new { @class = "form-control", placeholder = "рубашка,брюки и носки" })
-                                @Html.ValidationMessageFor(v => v.Inventory)
+                                @Html.EditorFor(t => t.Inventory, new {@class = "form-control", placeholder = "рубашка,брюки и носки"})
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Recipient.LastName)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Recipient.LastName, new { @class = "form-control", placeholder = "Иванов" })
-                                @Html.ValidationMessageFor(v => v.Recipient.LastName)
+                                @Html.EditorFor(t => t.Recipient.LastName, new {@class = "form-control", placeholder = "Иванов"})
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Recipient.FirstName)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Recipient.FirstName, new { @class = "form-control", placeholder = "Иван" })
-                                @Html.ValidationMessageFor(v => v.Recipient.FirstName)
+                                @Html.EditorFor(t => t.Recipient.FirstName, new {@class = "form-control", placeholder = "Иван"})
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Recipient.Patronymic)
                             </dt>
                             <dd>
                                 @Html.EditorFor(t => t.Recipient.Patronymic, new {@class = "form-control", placeholder = "Иванович"})
-                                @Html.ValidationMessageFor(v => v.Recipient.Patronymic)
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Recipient.Address)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Recipient.Address, new { @class = "form-control", placeholder = "Москва" })
-                                @Html.ValidationMessageFor(v => v.Recipient.Address)
+                                @Html.EditorFor(t => t.Recipient.Address, new {@class = "form-control", placeholder = "Москва"})
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Sender.LastName)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Sender.LastName, new { @class = "form-control", placeholder = "Петров" })
-                                @Html.ValidationMessageFor(v => v.Sender.LastName)
+                                @Html.EditorFor(t => t.Sender.LastName, new {@class = "form-control", placeholder = "Петров"})
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Sender.FirstName)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Sender.FirstName, new { @class = "form-control", placeholder = "Петр" })
-                                @Html.ValidationMessageFor(v => v.Sender.FirstName)
+                                @Html.EditorFor(t => t.Sender.FirstName, new {@class = "form-control", placeholder = "Петр"})
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Sender.Patronymic)
                             </dt>
                             <dd>
                                 @Html.EditorFor(t => t.Sender.Patronymic, new {@class = "form-control", placeholder = "Петрович"})
-                                @Html.ValidationMessageFor(v => v.Sender.Patronymic)
                             </dd>
                             <dt>
                                 @Html.DisplayNameFor(n => n.Sender.Address)
                             </dt>
                             <dd>
-                                @Html.EditorFor(t => t.Recipient.Address, new { @class = "form-control", placeholder = "Брянск" })
-                                @Html.ValidationMessageFor(v => v.Sender.Address)
+                                @Html.EditorFor(t => t.Sender.Address, new {@class = "form-control", placeholder = "Брянск"})
                             </dd>
                         </dl>
 
-                        <input type="submit" class="btn btn-primary" value="Зарегистрировать" />
+                        <input type="submit" class="btn btn-primary" value="Зарегистрировать"/>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Назад</button>
                     }
                 }

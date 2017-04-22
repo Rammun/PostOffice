@@ -22,6 +22,14 @@ namespace PostOffice.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ParcelRegister()
+        {
+            var parcel = new ParcelRegisterViewModel();
+
+            return PartialView("ParcelRegister", parcel);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ParcelRegister(ParcelRegisterViewModel model)
@@ -33,10 +41,15 @@ namespace PostOffice.Web.Controllers
                 Db.Parcels.Add(parcel);
                 Db.SaveChanges();
             }
+            var parsels = Db
+                .Parcels
+                .Include(r => r.Recipient)
+                .Include(s => s.Sender)
+                .ToList();
 
-            var parcels = Mapper.Map<IEnumerable<Parcel>, IEnumerable<ParcelViewModel>>(Db.Parcels.ToList());
-            
-            return PartialView("ParselSearch", parcels);
+            ViewBag.Parcels = Mapper.Map<IEnumerable<Parcel>, IEnumerable<ParcelViewModel>>(parsels);
+  
+            return PartialView("ParcelSearch");
         }
 
         [HttpPost]
@@ -67,7 +80,7 @@ namespace PostOffice.Web.Controllers
                                    x.SenderFullName.Contains(search))
                             .ToList();
             }
-
+            ViewBag.Parcels = result;
             return PartialView(result);
         }
 
